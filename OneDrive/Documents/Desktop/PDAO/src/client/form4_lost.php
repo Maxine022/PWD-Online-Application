@@ -131,6 +131,11 @@
       background-color: #fff;
     }
 
+    .form-check-input:checked {
+      background-color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+
     .upload-box {
     border: 2px dashed #ccc;
     border-radius: 6px;
@@ -156,7 +161,7 @@
   </style>
 </head>
 <body>
-  <?php include __DIR__ . '/../hero/navbar.php'; ?>
+  <?php include __DIR__ . '/../../hero/navbar.php'; ?>
 
  <div class="form-header">
     <h1 class="form-title">PWD Application Form</h1>
@@ -182,7 +187,7 @@
         <div class="step">
           <div class="circle">5</div>
           <div class="label">Submission Complete</div>
-        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -191,18 +196,19 @@
   <!-- Upload Title -->
 <div class="text-center">
   <label class="form-label fw-semibold" style="font-size: 1.5rem; line-height: 1.1;">
-    Upload Affidavit of Loss <br>
-    <span class="fw-normal" style="font-size: 1.0rem;">(Signed and Notarized by an Attorney).</span>
+    Upload Previous PWD ID <br>
+    <span class="fw-normal" style="font-size: 1.0rem;">(Clear Photo or Scanned Copy).</span>
   </label>
 
   <!-- Upload Box -->
-   <div class="border rounded d-flex flex-column justify-content-center align-items-center text-center p-4 my-4"
+   <div id="drop-area"
+     class="border rounded d-flex flex-column justify-content-center align-items-center text-center p-4 my-4"
      style="border-style: dashed; background-color: #f8f9fa; height: 230px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png" 
+  <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png"
        alt="Upload Icon" width="50" class="mb-1" />
   <label class="fw-semibold mb-1">Upload a Photo</label>
   <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
-  <input type="file" class="form-control mt-3" style="max-width: 300px;" />
+  <input id="fileElem" type="file" class="form-control mt-3" style="max-width: 300px;" />
 </div>
 
   <!-- Buttons -->

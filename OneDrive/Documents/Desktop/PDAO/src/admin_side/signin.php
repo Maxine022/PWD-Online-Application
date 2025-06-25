@@ -6,13 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+      margin: 0; padding: 0; height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f2f4f7;
       overflow: hidden;
@@ -34,7 +30,7 @@
 
     .left-content {
       max-width: 600px;
-      margin-left: 60px; 
+      margin-left: 60px;
     }
 
     .left-content h1 {
@@ -53,10 +49,10 @@
     }
 
     .left-content img {
-        max-width: 100%;
-        max-height: 400px;
-        object-fit: contain;
-        margin-left: 70px;
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      margin-left: 70px;
     }
 
     .right-panel {
@@ -74,20 +70,20 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.08);
       padding: 45px 35px;
       width: 100%;
-      max-width: 400px;
+      max-width: 480px;
       text-align: center;
       animation: fadeIn 0.7s ease;
       margin-left: -40px;
     }
 
     .login-card img.logo {
-      width: 100px;
+      width: 130px;
       margin-bottom: 20px;
     }
 
     .login-card p {
       color: #555;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       font-size: 0.95rem;
     }
 
@@ -151,14 +147,9 @@
     }
 
     @media (max-width: 992px) {
-      html, body {
-        overflow: auto;
-      }
+      html, body { overflow: auto; }
 
-      .main-wrapper {
-        flex-direction: column;
-        height: auto;
-      }
+      .main-wrapper { flex-direction: column; height: auto; }
 
       .left-panel, .right-panel {
         width: 100%;
@@ -166,17 +157,38 @@
         padding: 30px 20px;
       }
 
-      .left-content {
-        margin-left: 0;
-      }
+      .left-content { margin-left: 0; }
 
-      .left-content h1 {
-        font-size: 2rem;
-      }
+      .left-content h1 { font-size: 2rem; }
 
-      .left-content img {
-        max-height: 300px;
-      }
+      .left-content img { max-height: 300px; }
+    }
+
+    .role-toggle .toggle-container {
+        display: flex;
+        background: #dcdcdc;
+        border-radius: 10px;
+        overflow: hidden;
+        width: fit-content;
+        margin: 0 auto 15px;
+        border: 1px solid #ccc;
+    }
+
+    .toggle-option {
+        flex: 1;
+        padding: 10px 24px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        color: #333;
+        background-color: #f0f0f0;
+    }
+
+    .toggle-option.active {
+        background-color: #245c9a;  
+        color: #fff;
+        border-radius: 10px;
     }
 
     @keyframes fadeIn {
@@ -193,8 +205,8 @@
   <div class="left-panel">
     <div class="left-content">
       <h1>Welcome to PWD<br>Admin Portal</h1>
-      <p>Log in to continue your<br>PWD registration and updates.</p>
-      <img src="/assets/PWD.png" alt="PWD Illustration">
+      <p>Dedicated to Better Accessibility<br> and Support.</p>
+      <img src="/assets/admin.png" alt="PWD Illustration">
     </div>
   </div>
 
@@ -202,14 +214,28 @@
   <div class="right-panel">
     <div class="login-card">
       <img src="/assets/Logo.jpg" class="logo" alt="PWD Logo">
-      <p>Sign in to start your session</p>
+      <p style="font-size: 1.3rem; font-weight: 600;">Sign in as...</p>
+
+      <!-- Toggle Role -->
+      <div class="role-toggle mb-3">
+        <input type="radio" name="role" id="admin" value="admin" checked hidden>
+        <input type="radio" name="role" id="doctor" value="doctor" hidden>
+        <div class="toggle-container">
+          <label for="admin" class="toggle-option active">ADMIN</label>
+          <label for="doctor" class="toggle-option">DOCTOR</label>
+        </div>
+      </div>
+
+      <!-- Login Form -->
       <form action="admin_login_process.php" method="POST">
+        <input type="hidden" name="role" id="selectedRole" value="admin">
+
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" required>
+          <input type="email" name="email" class="form-control" placeholder="Email" required>
           <span class="form-icon"><i class="fas fa-envelope"></i></span>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" required>
+          <input type="password" name="password" class="form-control" placeholder="Password" required>
           <span class="form-icon"><i class="fas fa-lock"></i></span>
         </div>
         <a href="#" class="forgot">I forgot my password</a>
@@ -219,6 +245,20 @@
     <img src="/assets/iligan.png" class="iligan-logo" alt="Iligan Logo">
   </div>
 </div>
+
+<!-- Toggle Logic -->
+<script>
+  const labels = document.querySelectorAll('.toggle-option');
+  const roleInput = document.getElementById('selectedRole');
+
+  labels.forEach(label => {
+    label.addEventListener('click', () => {
+      labels.forEach(l => l.classList.remove('active'));
+      label.classList.add('active');
+      roleInput.value = label.textContent.trim().toLowerCase();
+    });
+  });
+</script>
 
 </body>
 </html>

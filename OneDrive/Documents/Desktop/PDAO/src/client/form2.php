@@ -138,7 +138,7 @@
   </style>
 </head>
 <body>
-  <?php include __DIR__ . '/../hero/navbar.php'; ?>
+  <?php include __DIR__ . '/../../hero/navbar.php'; ?>
 
   <h1 class="form-title">PWD Application Form</h1>
 

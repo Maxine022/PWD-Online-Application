@@ -68,14 +68,14 @@
 </head>
 <body>
 
-<?php include __DIR__ . '/../hero/navbar.php'; ?>
+<?php include __DIR__ . '/../../hero/navbar.php'; ?>
 
 <div class="container d-flex justify-content-center align-items-start" style="min-height: 100vh; padding-top: 100px;">
   <div class="status-card text-center">
     <h4>Check Application Status</h4>
     <form id="statusForm">
       <div class="mb-4 text-start">
-        <input type="text" id="refCode" class="form-control shadow-sm rounded-3" placeholder="Enter your referral code" required>
+        <input type="text" id="refCode" class="form-control shadow-sm rounded-3" placeholder="Enter your name" required>
       </div>
 
       <!-- Check Status Button -->
@@ -93,7 +93,6 @@
       <!-- Application Details -->
       <div id="applicationDetails" style="display: none; text-align: left;" class="mt-3">
         <div id="applicationDetails" style="display: none; text-align: left;" class="mt-3">
-        <p><strong>Referral Code:</strong> <span id="refCodeDisplay"></span></p>
         <p><strong>Full Name:</strong> <span id="fullName"></span></p>
         <p><strong>Application Type:</strong> <span id="appType"></span></p>
         <p><strong>Status:</strong> <span id="appStatus"></span></p>

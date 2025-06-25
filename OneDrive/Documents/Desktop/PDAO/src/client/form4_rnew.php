@@ -131,17 +131,34 @@
       background-color: #fff;
     }
 
-    .form-check-input:checked {
-      background-color: var(--primary-blue);
-      border-color: var(--primary-blue);
-    }
-    
+    .upload-box {
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .upload-box.dragover {
+    border-color: #007bff;
+    background-color: #e9f5ff;
+  }
+
+  .upload-box img {
+    width: 50px;
+    margin-bottom: 10px;
+  }
   </style>
 </head>
 <body>
-  <?php include __DIR__ . '/../hero/navbar.php'; ?>
+  <?php include __DIR__ . '/../../hero/navbar.php'; ?>
 
-  <div class="form-header">
+ <div class="form-header">
     <h1 class="form-title">PWD Application Form</h1>
     <div class="step-indicator-wrapper">
         <div class="step-indicator">
@@ -154,76 +171,73 @@
             <div class="circle">2</div>
             <div class="label">Affiliation Section</div>
         </div>
-        <div class="step active">
+        <div class="step">
           <div class="circle">3</div>
           <div class="label">Approval Section</div>
         </div>
-        <div class="step">
+        <div class="step active">
           <div class="circle">4</div>
           <div class="label">Upload Documents</div>
         </div>
         <div class="step">
           <div class="circle">5</div>
           <div class="label">Submission Complete</div>
-        </div>
+      </div>
       </div>
     </div>
   </div>
 
-  <div class="form-container">
-    <form>
-      <div class="row g-3 mb-3">
-        <div class="col-md-6">
-          <label class="form-label">Name of Certifying Physician:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">License No.:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Processing Officer:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Approving Officer:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Encoder:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Name of Reporting Unit (Office/Section):</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Control No.:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
+<div class="container my-4 p-5 bg-white rounded shadow-sm" style="max-width: 700px;" >
+  <!-- Upload Title -->
+<div class="text-center">
+  <label class="form-label fw-semibold" style="font-size: 1.5rem; line-height: 1.1;">
+    Upload Affidavit of Loss <br>
+    <span class="fw-normal" style="font-size: 1.0rem;">(Signed and Notarized by an Attorney).</span>
+  </label>
 
-      <div class="mb-3 border-start border-4 border-primary bg-light rounded p-2 ps-3 fw-semibold text-primary">
-        IN CASE OF EMERGENCY
-      </div>
+  <!-- Upload Box -->
+   <div class="border rounded d-flex flex-column justify-content-center align-items-center text-center p-4 my-4"
+     style="border-style: dashed; background-color: #f8f9fa; height: 230px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png" 
+       alt="Upload Icon" width="50" class="mb-1" />
+  <label class="fw-semibold mb-1">Upload a Photo</label>
+  <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
+  <input type="file" class="form-control mt-3" style="max-width: 300px;" />
+</div>
 
-      <div class="row g-3 mb-4">
-        <div class="col-md-6">
-          <label class="form-label">Contact Person’s Name:</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">Contact Person’s No.:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-primary">Back</button>
-        <button type="submit" class="btn btn-primary px-4">Next</button>
-      </div>
-    </form>
+  <!-- Buttons -->
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary">Back</button>
+    <button type="submit" class="btn btn-primary">Next</button>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+
+<script>
+  const dropArea = document.getElementById('drop-area');
+  const fileInput = document.getElementById('fileElem');
+
+  // Prevent default behavior for drag events
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => e.preventDefault(), false);
+  });
+
+  // Highlight drop area on dragover
+  dropArea.addEventListener('dragover', () => {
+    dropArea.classList.add('border-primary');
+  });
+
+  dropArea.addEventListener('dragleave', () => {
+    dropArea.classList.remove('border-primary');
+  });
+
+  dropArea.addEventListener('drop', (e) => {
+    dropArea.classList.remove('border-primary');
+    const files = e.dataTransfer.files;
+
+    if (files.length > 0) {
+      // Assign dropped files to input element
+      fileInput.files = files;
+      alert(`File dropped: ${files[0].name}`);
+    }
+  });
+</script>
