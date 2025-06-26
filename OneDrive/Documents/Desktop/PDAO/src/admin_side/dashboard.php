@@ -22,19 +22,33 @@
       left: 0;
       padding: 20px;
       padding-bottom: 40px;
-      transition: width 0.3 ease, opacity 0.3s ease;
+      transition: width 0.3s ease, opacity 0.3s ease;
       opacity: 1;
     }
-    .sidebar.closed{
-      width: 0;
-      opacity: 0;
-      padding: 0;
+    .sidebar.closed {
+      width: 80px;
+      padding: 20px 10px;
+      opacity: 1;
+      overflow: hidden;
+      transition: width 0.3s ease, opacity 0.3s ease;
     }
     .sidebar .logo {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       gap: 10px;
       margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    .sidebar.closed .logo {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+    .sidebar.closed .logo img {
+      width: 50px;
+      height: 48px;
     }
     .sidebar h4 {
       margin: 0;
@@ -53,13 +67,42 @@
       background-color: rgba(255, 255, 255, 0.1);
       color: white !important;
     }
+    .sidebar.closed .toggle-btn .no-wrap span {
+      display: none !important;
+    }
+    .sidebar.closed .toggle-btn .chevron-icon {
+      display: none;
+    }
+    .sidebar.closed .submenu {
+      max-height: 0 !important;
+    }
+    .sidebar-item .toggle-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1); 
+      color: #f5f5f5 !important;
+    }
+    .sidebar.closed a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .sidebar.closed i {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    .sidebar.closed a span {
+      display: none;
+    }
+    .sidebar.closed .toggle-btn {
+      justify-content: center;
+    }
     .main {
       margin-left: 260px;
       padding: 20px;
       transition: margin-left 0.3s ease;
     }
     .main.shifted {
-      margin-left: 0;
+      margin-left: 80px;
     }
     .topbar {
       display: flex;
@@ -108,10 +151,7 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    .sidebar-item .toggle-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1); /* Slight background on hover */
-      color: #f5f5f5 !important;
-    }
+    
     .chevron-icon {
       transition: transform 0.3s ease;
     }
@@ -152,29 +192,41 @@
 <body>
 
 <div class="sidebar">
-  <div class="logo">
-    <img src="/assets/white.png" alt="logo" width="40">
-    <h4>PDAO</h4>
-  </div>
+    <div class="logo">
+      <img src="/assets/white.png" alt="logo" width="40">
+      <h4>PDAO</h4>
+    </div>
   <hr> <!-- Horizontal line stretching from logo area -->
-  <a class="active"><i class="fas fa-chart-line me-2"></i>Dashboard</a>
-  <a><i class="fas fa-users me-2"></i>Members</a>
+  <a class="active"><i class="fas fa-chart-line me-2"></i><span>Dashboard</span></a>
+  <a><i class="fas fa-users me-2"></i><span>Members</span></a>
 
   <div class="sidebar-item">
     <div class="toggle-btn d-flex justify-content-between align-items-center">
-      <span class="no-wrap"><i class="fas fa-folder me-2"></i>Manage Applications</span>
+      <span class="no-wrap d-flex align-items-center"><i class="fas fa-folder me-2"></i><span>Applications</span></span>
       <i class="fas fa-chevron-down chevron-icon"></i>
     </div>
     <div class="submenu">
-      <a href="#" class="submenu-link"><i class="fas fa-plus me-2"></i>New Applications</a>
-      <a href="#" class="submenu-link"><i class="fas fa-redo me-2"></i>Renew ID</a>
-      <a href="#" class="submenu-link"><i class="fas fa-id-badge me-2"></i>Lost ID</a>
+      <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
+        <span class="icon"><i class="fas fa-file-alt"></i></span>
+        <span class="ms-2">Application Review</span>
+      </a>
+      <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
+        <span class="icon" style="width: 18px;"><i class="fas fa-user-check"></i></span>
+        <span class="ms-2">Accept Applications</span>
+      </a>
+      <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
+        <span class="icon" style="width: 18px;"><i class="fas fa-hourglass-half"></i></span>
+        <span class="ms-2">Pending Applications</span>
+      </a>
+      <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
+        <span class="icon" style="width: 18px;"><i class="fas fa-user-times"></i></span>
+        <span class="ms-2">Denied Applications</span>
+      </a>
     </div>
   </div>
 
-  <a><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+  <a><i class="fas fa-sign-out-alt me-2"></i><span>Logout</span></a>
 </div>
-
 <div class="main">
   <div class="topbar">
     <div class="d-flex align-items-center">
