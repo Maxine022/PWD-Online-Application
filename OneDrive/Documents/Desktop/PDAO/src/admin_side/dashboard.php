@@ -118,15 +118,31 @@
     }
     .card-stat {
       flex: 1;
+      position: relative;
       min-width: 200px;
-      background-color: #2a2aa5;
+      background-color:  #2b2bb2;
       color: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 5px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
     }
+    .card-stat::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 20px;
+      width: 100%;
+      background-color:rgb(26, 26, 35);
+      opacity: 30%;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    
     .card-stat i {
       font-size: 2rem;
     }
@@ -202,7 +218,7 @@
 
   <div class="sidebar-item">
     <div class="toggle-btn d-flex justify-content-between align-items-center">
-      <span class="no-wrap d-flex align-items-center"><i class="fas fa-folder me-2"></i><span>Applications</span></span>
+      <span class="no-wrap d-flex align-items-center"><i class="fas fa-folder me-2"></i><span>Manage Applications</span></span>
       <i class="fas fa-chevron-down chevron-icon"></i>
     </div>
     <div class="submenu">
@@ -212,15 +228,15 @@
       </a>
       <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
         <span class="icon" style="width: 18px;"><i class="fas fa-user-check"></i></span>
-        <span class="ms-2">Accept Applications</span>
+        <span class="ms-2">Accepted</span>
       </a>
       <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
         <span class="icon" style="width: 18px;"><i class="fas fa-hourglass-half"></i></span>
-        <span class="ms-2">Pending Applications</span>
+        <span class="ms-2">Pending</span>
       </a>
       <a href="#" class="submenu-link d-flex align-items-center ps-4" style="padding-top: 3px; padding-bottom: 3px; margin: 5px 0;">
         <span class="icon" style="width: 18px;"><i class="fas fa-user-times"></i></span>
-        <span class="ms-2">Denied Applications</span>
+        <span class="ms-2">Denied</span>
       </a>
     </div>
   </div>

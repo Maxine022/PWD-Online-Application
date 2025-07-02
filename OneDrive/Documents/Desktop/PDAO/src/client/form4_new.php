@@ -211,10 +211,30 @@
     </div>
 
     <div class="mb-4">
-      <label for="medicalCert" class="form-label">Upload Doctor’s Referral / Medical Certificate from City Health Office (CHO):</label>
+      <label for="medicalCert" class="form-label">Upload Medical Certificate:</label>
       <div class="upload-box">
         <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png" alt="Upload Icon" width="50" class="mb-1" />
         <div class="fw-semibold mb-1">Upload a Photo</div>
+        <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
+        <input id="medicalCert" name="medicalCert" type="file" class="form-control mt-3" style="max-width: 300px;" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="medicalCert" class="form-label">Upload Proof of Disability (PHOTO):</label>
+      <div class="upload-box">
+        <img src="/assets/add-image.png" alt="Upload Icon" width="50" class="mb-1" />
+        <div class="fw-semibold mb-1">Upload a Photo</div>
+        <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
+        <input id="medicalCert" name="medicalCert" type="file" class="form-control mt-3" style="max-width: 300px;" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="medicalCert" class="form-label">Upload Proof of Disability (VIDEO):</label>
+      <div class="upload-box text-center">
+        <img src="/assets/upload.png" alt="Video Upload Icon" width="60" class="mb-1" />
+        <div class="fw-semibold mb-1">Upload Video</div>
         <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
         <input id="medicalCert" name="medicalCert" type="file" class="form-control mt-3" style="max-width: 300px;" />
       </div>

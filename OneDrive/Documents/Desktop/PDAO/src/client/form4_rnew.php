@@ -131,6 +131,11 @@
       background-color: #fff;
     }
 
+    .form-check-input:checked {
+      background-color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+
     .upload-box {
     border: 2px dashed #ccc;
     border-radius: 6px;
@@ -188,22 +193,43 @@
   </div>
 
 <div class="container my-4 p-5 bg-white rounded shadow-sm" style="max-width: 700px;" >
-  <!-- Upload Title -->
-<div class="text-center">
-  <label class="form-label fw-semibold" style="font-size: 1.5rem; line-height: 1.1;">
-    Upload Affidavit of Loss <br>
-    <span class="fw-normal" style="font-size: 1.0rem;">(Signed and Notarized by an Attorney).</span>
+  <label class="form-label fw-semibold" style="font-size: 1.00rem;">
+    Upload Previous PWD ID 
+    <span class="fw-normal" style="font-size: 1.00rem;">(Clear Photo or Scanned Copy).</span>
   </label>
 
   <!-- Upload Box -->
-   <div class="border rounded d-flex flex-column justify-content-center align-items-center text-center p-4 my-4"
-     style="border-style: dashed; background-color: #f8f9fa; height: 230px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png" 
+   <div id="drop-area"
+     <div class="rounded d-flex flex-column justify-content-center align-items-center text-center p-3 my-3"
+     style="border: 2px dashed #ccc; background-color: #f8f9fa; height: 230px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png"
        alt="Upload Icon" width="50" class="mb-1" />
-  <label class="fw-semibold mb-1">Upload a Photo</label>
+  <div class="fw-semibold mb-1">Upload a Photo</div>
   <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
-  <input type="file" class="form-control mt-3" style="max-width: 300px;" />
+  <input id="fileElem" type="file" class="form-control mt-3" style="max-width: 300px;" />
 </div>
+
+
+<div class="mb-4">
+      <label for="medicalCert" class="form-label">Upload Proof of Disability (PHOTO):</label>
+      <div class="upload-box">
+        <img src="/assets/add-image.png" alt="Upload Icon" width="60" class="mb-1" />
+        <div class="fw-semibold mb-1">Upload a Photo</div>
+        <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
+        <input id="medicalCert" name="medicalCert" type="file" class="form-control mt-3" style="max-width: 300px;" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="medicalCert" class="form-label">Upload Proof of Disability (VIDEO):</label>
+      <div class="upload-box text-center">
+        <img src="/assets/upload.png" alt="Video Upload Icon" width="60" class="mb-1" />
+        <div class="fw-semibold mb-1">Upload Video</div>
+        <div class="text-muted" style="font-size: 0.85rem;">Drag and drop files here</div>
+        <input id="medicalCert" name="medicalCert" type="file" class="form-control mt-3" style="max-width: 300px;" />
+      </div>
+    </div>
+
 
   <!-- Buttons -->
   <div class="d-flex justify-content-between">
